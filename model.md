@@ -56,10 +56,10 @@ best_test_rmse = result.fun
 print('Best Hyperparameters:', best_hyperparameters)
 print('Best RMSE on Test Data:', best_test_rmse)
 
-# Train a Gradient Boosting Regressor with the best hyperparameters on the full training data
+# Train a Random Forest Regressor with the best hyperparameters on the full training data
 best_n_estimators, best_learning_rate, best_max_depth, best_min_samples_split, best_min_samples_leaf = best_hyperparameters
 
-final_reg = GradientBoostingRegressor(
+final_reg = RandomForestRegressor(
     n_estimators=int(best_n_estimators),
     learning_rate=best_learning_rate,
     max_depth=int(best_max_depth),
@@ -99,5 +99,5 @@ df_final['Actual out1'] = y_train
 df_final['Predicted out1'] = y_train_pred
 df_final
 import pickle
-with open("gb_de_scc.pkl", "wb") as file:
+with open("rf_de_scc.pkl", "wb") as file:
     pickle.dump(final_reg, file)
